@@ -1,32 +1,86 @@
 ---
-title: "Codebook template"
-author: "Your name here"
-date: "The date here"
-output:
-  html_document:
-    keep_md: yes
+title: Tidy dataset construction -- Getting and Cleaning Data
+author: Cory Strope
+date: April 25, 2015
+output: tidyData.txt
 ---
  
 ## Project Description
-Short description of the project
- 
+Read in the data from the UCI HAR Dataset (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones), modify the data to make a dataset, return tidy data in 'tidyData.txt'.
+
 ##Study design and data processing
  
 ###Collection of the raw data
-Description of how the data was collected.
- 
+Data was collected from the link:
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
 ###Notes on the original (raw) data 
 Some additional notes (if avaialble, otherwise you can leave this section out).
  
 ##Creating the tidy datafile
  
 ###Guide to create the tidy data file
-Description on how to create the tidy data file (1. download the data, ...)/
- 
+1. Download the data
+2. Merge the training and the test sets to create one data set.
+3. Extract the measurements on the mean and standard deviation for each measurement. 
+4. Use descriptive activity names (inactivity_labels.txt) to name the activities in the data set
+5. Label the data set with descriptive variable names (in features.txt). 
+6. From the data set in step 5, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 ###Cleaning of the data
-Short, high-level description of what the cleaning script does. [link to the readme document that describes the code in greater detail]()
- 
+The run_analysis.R script reads in the data from several files and creates a single, tidy data set by concatenating the training and test data, adding the activity labels and features, and saving only the mean and standard deviation columns. The final tidy data reports the mean of each column, for each subject/activity data pair. 
+For a more complete description, see https://github.com/cstrope/GCD_Course_Project/edit/master/README.md
+
 ##Description of the variables in the tiny_data.txt file
+The final tidy data set is 180 rows by 88 columns. 
+
+The data is separated by activity (6 activities, see README) and subject (30 subjects) rows. The remainder of the columns are the mean of each variable with the specified subject/activity pair.
+
+The varible in the columns are as follows:
+"tBodyAcc-mean()-X"                    "tBodyAcc-mean()-Y"                   
+"tBodyAcc-mean()-Z"                    "tGravityAcc-mean()-X"                
+"tGravityAcc-mean()-Y"                 "tGravityAcc-mean()-Z"                
+"tBodyAccJerk-mean()-X"                "tBodyAccJerk-mean()-Y"               
+"tBodyAccJerk-mean()-Z"                "tBodyGyro-mean()-X"                  
+"tBodyGyro-mean()-Y"                   "tBodyGyro-mean()-Z"                  
+"tBodyGyroJerk-mean()-X"               "tBodyGyroJerk-mean()-Y"              
+"tBodyGyroJerk-mean()-Z"               "tBodyAccMag-mean()"                  
+"tGravityAccMag-mean()"                "tBodyAccJerkMag-mean()"              
+"tBodyGyroMag-mean()"                  "tBodyGyroJerkMag-mean()"             
+"fBodyAcc-mean()-X"                    "fBodyAcc-mean()-Y"                   
+"fBodyAcc-mean()-Z"                    "fBodyAcc-meanFreq()-X"               
+"fBodyAcc-meanFreq()-Y"                "fBodyAcc-meanFreq()-Z"               
+"fBodyAccJerk-mean()-X"                "fBodyAccJerk-mean()-Y"               
+"fBodyAccJerk-mean()-Z"                "fBodyAccJerk-meanFreq()-X"           
+"fBodyAccJerk-meanFreq()-Y"            "fBodyAccJerk-meanFreq()-Z"           
+"fBodyGyro-mean()-X"                   "fBodyGyro-mean()-Y"                  
+"fBodyGyro-mean()-Z"                   "fBodyGyro-meanFreq()-X"              
+"fBodyGyro-meanFreq()-Y"               "fBodyGyro-meanFreq()-Z"              
+"fBodyAccMag-mean()"                   "fBodyAccMag-meanFreq()"              
+"fBodyBodyAccJerkMag-mean()"           "fBodyBodyAccJerkMag-meanFreq()"      
+"fBodyBodyGyroMag-mean()"              "fBodyBodyGyroMag-meanFreq()"         
+"fBodyBodyGyroJerkMag-mean()"          "fBodyBodyGyroJerkMag-meanFreq()"     
+"tBodyAcc-std()-X"                     "tBodyAcc-std()-Y"                    
+"tBodyAcc-std()-Z"                     "tGravityAcc-std()-X"                 
+"tGravityAcc-std()-Y"                  "tGravityAcc-std()-Z"                 
+"tBodyAccJerk-std()-X"                 "tBodyAccJerk-std()-Y"                
+"tBodyAccJerk-std()-Z"                 "tBodyGyro-std()-X"                   
+"tBodyGyro-std()-Y"                    "tBodyGyro-std()-Z"                   
+"tBodyGyroJerk-std()-X"                "tBodyGyroJerk-std()-Y"               
+"tBodyGyroJerk-std()-Z"                "tBodyAccMag-std()"                   
+"tGravityAccMag-std()"                 "tBodyAccJerkMag-std()"               
+"tBodyGyroMag-std()"                   "tBodyGyroJerkMag-std()"              
+"fBodyAcc-std()-X"                     "fBodyAcc-std()-Y"                    
+"fBodyAcc-std()-Z"                     "fBodyAccJerk-std()-X"                
+"fBodyAccJerk-std()-Y"                 "fBodyAccJerk-std()-Z"                
+"fBodyGyro-std()-X"                    "fBodyGyro-std()-Y"                   
+"fBodyGyro-std()-Z"                    "fBodyAccMag-std()"                   
+"fBodyBodyAccJerkMag-std()"            "fBodyBodyGyroMag-std()"              
+"fBodyBodyGyroJerkMag-std()"           "angle(tBodyAccMean,gravity)"         
+"angle(tBodyAccJerkMean),gravityMean)" "angle(tBodyGyroMean,gravityMean)"    
+"angle(tBodyGyroJerkMean,gravityMean)" "angle(X,gravityMean)"                
+"angle(Y,gravityMean)"                  "angle(Z,gravityMean)"    
+
 General description of the file including:
  - Dimensions of the dataset
  - Summary of the data
